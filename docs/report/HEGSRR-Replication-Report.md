@@ -26,8 +26,6 @@ Stream classification is an important tool for understanding the geomorphic form
 
 ## Original Study Information
 
-**Include reference map for John Day Watershed??
-
 [Kasprak et al (2016)](https://dx.plos.org/10.1371/journal.pone.0150293) classified 33 stream reaches in the Middle Fork John Day Basin in order to compare the efficacy of four different stream classification methods. For each classification method, the authors rely primarily on data from the [Columbia Habitat Monitoring Program](http://www.champmonitoring.org) (CHaMP), which provides detailed elevation models as well as field-based measurements of depth, width, and particle size. For the Rosgen classification, they use field measured depth, width, and mean particle size values from the CHaMP surveys as well as 10m and 0.1m resolution DEMs to calculate the metrics necessary for Level I and Level II classifications, as outlined by [Rosgen (1994)](https://linkinghub.elsevier.com/retrieve/pii/0341816294900019). The analysis code and detailed DEMs used by Kasprak et al are not publicly available, but the complete CHaMP survey data are available for download [here](data/raw/public/CHaMP_Data_MFJD.shp). This layer includes all CHaMP survey points used by Kasprak et al, all field measured data used in the classifications, and the final classification of each reach.
 
 ## Analytical Plan
@@ -35,8 +33,8 @@ Stream classification is an important tool for understanding the geomorphic form
 Describe all elements of the analytical plan of the original study that are relevant to the research questions and hypotheses being re-examined by the replication. Include information for each of the following sub-sections as appropriate.
 
 ### Sampling Plan and Data Description
-
-|:-:|
+| |
+| :-: |
 |![John Day Watershed](results/maps/john_day_watershed.PNG)|
 |![Study Site Elevation](results/maps/elevation_study_site.PNG)|
 |*Figure 1: Study site detail and location within the John Day Watershed*|
@@ -65,17 +63,20 @@ I use a 1-meter resolution LiDAR-derived DEM, available for download [here](data
 ### Procedure
 The procedure for this replication uses the same definitions of ratios and classification workflow as [Rosgen (1994)](https://linkinghub.elsevier.com/retrieve/pii/0341816294900019) (Fig. 2). In contrast with both Rosgen (1994) and Kasprak et al. (2016), this replication uses a LiDAR-derived DEM rather than field surveys to calculate terrain-based metrics of channel form. Stream and valley boundaries were digitized by hand in order to produce centerlines used to derive the length and longitudinal profile of the reach, and a single transect located near the CHaMP survey point was created in order to derive a cross-sectional profile of the reach. The elevation along the longitudinal profile and cross section was then extracted and used to calculate the necessary metrics.s
 
-|:-:|
+| |
+| :-: |
 |![Rosgen Classification Workflow](procedure/protocols/rosgen_level2.jpg)|
 |*Figure 2: Level II Rosgen Classification workflow*|
 
 The region of analysis consists of a buffer around the CHaMP survey point with a radius of 10 times the bankfull width of the stream reach as measured by the CHaMP survey. This buffer as well as visualizations of elevation and slope (Fig. 3) were created in GRASS using [a model](procedure/code/visualize.gxm) provided by [Joseph Holler](https://github.com/josephholler). Stream and valley centerlines were digitized by hand at 1:1500 scale using maps of elevation and slope to help visually identify the location of river banks and valley edges. Three sets of bank and valley boundaries, all of which extended beyond the buffer region, were created independently and then patched together and averaged in order to produce a final mean centerline (Fig. 4) for the stream and valley using [a model](procedure/code/center_line_length_no_clip.gxm) provided by [Joseph Holler](https://github.com/josephholler). A set of transects of the valley centerline, spaced 50 meters apart, were then created, and the transect closest to the CHaMP point was selected to produce a single cross-sectional profile of the reach. This workflow was created by Zach Hilgendorf and is available [here](procedure/protocols/1-Research_Protocol_GRASS.pdf)
 
-|:-:|:-:|
+| | |
+| :-: | :-: |
 |![Elevation at Study Site](results/maps/elevation_study_site.PNG)|![Slope at Study Site](results/maps/slope_study_site.PNG)|
 |*Figure 3a: Map of elevation at the study site*|*Figure 3b: Slope at the study site*|
 
-|:-:|:-:|
+| | |
+| :-: | :-: |
 |![Raw bank centerlines](results/maps/banks_lines.PNG)|![Raw valley centerlines](results/maps/valley_lines.PNG)|
 |*Figure 4a: Stream centerlines from each digitization and final mean centerline*|*Figure 4b: Valley centerlines from each digitization and final mean centerline*
 
@@ -108,7 +109,8 @@ All measurements are in meters unless otherwise indicated
 | Valley Length | 173.11 | longitudinal profile|
 | Median Channel Material Particle Diameter (mm) | 55 | CHaMP survey |
 
-|:-:|
+| |
+| :-: |
 |![Cross section](results/figures/cross_section_avg_depth1.PNG)|
 |*Figure 5: Cross sectional profile of the selected transect, with the valley depth and mean bankfull depth highlighted*|
 
@@ -139,17 +141,19 @@ Table 4. Rosgen Classification Metrics from Kasprak et al. (2016)
 
 ## Unplanned Deviations from the Protocol
 
-Due to the location of the survey point and the size of the buffer, I was unable to clip the stream and valley centerlines to the buffer as originally planned. Since one edge of the valley lied entirely outside of the buffer (Fig. 1), doing so would have made it impossible to produce a centerline for use in the rest of the analysis. Although this change in the workflow makes the sinuosity value less consistent and less reliable - its validity is entirely dependent on how consistent the start and end of the digitized bank and valley lines are - my final bank and valley centerlines appear to start and end in similar locations (Fig. 5).
+Due to the location of the survey point and the size of the buffer, I was unable to clip the stream and valley centerlines to the buffer as originally planned. Since one edge of the valley lied entirely outside of the buffer (Fig. 1), doing so would have made it impossible to produce a centerline for use in the rest of the analysis. Although this change in the workflow makes the sinuosity value less consistent and less reliable - its validity is entirely dependent on how consistent the start and end of the digitized bank and valley lines are - my final bank and valley centerlines appear to start and end in similar locations (Fig. 6).
 
+| |
 |:-:|
 |![Stream and Valley centerlines](results/maps/stream_valley_centerline.PNG)|
-|*Figure 5: Final stream and valley centerlines are roughly consistent in their start and end points*|
+|*Figure 6: Final stream and valley centerlines are roughly consistent in their start and end points*|
 
-The R script used for postprocessing originally calculated slope by averaging the slope values at every point along the longitudinal profile of the reach. However, errors in digitizing the stream banks and artifacts in the elevation data make these values very inconsistent (Fig. 6) and artificially inflate the final slope value: using the original method yields a slope of 4.58%, while using only the start and end points of the reach yields a slope of 2.13%.
+The R script used for postprocessing originally calculated slope by averaging the slope values at every point along the longitudinal profile of the reach. However, errors in digitizing the stream banks and artifacts in the elevation data make these values very inconsistent (Fig. 7) and artificially inflate the final slope value: using the original method yields a slope of 4.58%, while using only the start and end points of the reach yields a slope of 2.13%.
 
+| |
 |:-:|
 |![Long Profile Slope](results/figures/slope_locid17.PNG)|
-|*Figure 6: Calculating slope meter-by-meter along the reach yields wildly inconsistent values*|
+|*Figure 7: Calculating slope meter-by-meter along the reach yields wildly inconsistent values*|
 
 ## Discussion
 
