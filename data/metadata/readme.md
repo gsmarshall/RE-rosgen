@@ -17,7 +17,7 @@ This dataset is a National Agricultural Imagery Program (NAIP) 4-Band 8 Bit imag
 
 This dataset was accessed through the NOAA Data Access Viewer website (https://coast.noaa.gov/dataviewer/?#/), which contains imagery, land cover, and elevation/LiDAR data for portions of the United States. Data was clipped to the extent of the LiDAR DEM to allow for easier sharing of the dataset.
 
-![area of interest](aoi.jpg) 
+![area of interest](aoi.jpg)
 Figure 1. State of Oregon, USA, with the Middle Fork John Day River outlined in black. The green dots within the watershed boundary show the location of the Columbia Habitat Monitoring Program (CHaMP) data points provided for this project.
 
 Download into the `data/raw/private` directory from https://geography.middlebury.edu/jholler/data/rosgenrr/JohnDayWShed_OrthoPrj.zip
@@ -29,3 +29,7 @@ The Columbia Habitat Monitoring Program (CHaMP) observed 26 watersheds in the Co
 Data was accessed through a National Oceanic and Atmospheric Administration (NOAA) data portal and was available upon request (https://www.fisheries.noaa.gov/inport/item/18087). The data originally came as two CSV datasets with latitude and longitude positions. These data were joined and converted into a point vector shapefile using the lat/long positions. The final dataset includes data on grain size, bankfull depth, width, and volume, collection years, discharge during collection, sinuosity (to compare against your values), and other stream classification designations to help characterize the dataset. Please note that there are multiple points occupying a single location, as these points represent different collections throughout the years.
 
 Variable names and descriptions are tabulated in [MFJD_Variables.csv](MFJD_Variables.csv)
+
+## Derived Data Sets
+
+For a complete list of raw and derived data sets used in this analysis, please see the [data_metadata.csv](data/data_metadata.csv) file in the [data](data). For descriptions of the methods used to create each derived data set, please see the [final replication report](https://gsmarshall.github.io/rosgen/HEGSRR-Replication-Report.html), the [deatiled workflow](procedure/protocols/1-Research_Protocol_GRASS.pdf) used to perform analysis in GRASS, and the [R markdown](procedure/code/2-ProfileViewer.Rmd) file used to complete the classification.

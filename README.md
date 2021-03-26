@@ -23,10 +23,10 @@ An overview of the folder structure of this repository is provided below. The `R
     |- data/           # raw data, which are not changed once created
     |  +- raw/         # raw data, will not be altered
     |  	  +- private/  # for private/confidential data or data too large to version control
-	|  	  +- private/  # for public data to be version controlled
+	  |  	  +- public/  # for public data to be version controlled
     |  +- derived/     # derived data, will not be altered once created
     |  	  +- private/  # for private/confidential data or data too large to version control
-	|  	  +- private/  # for public data to be version controlled
+	  |  	  +- public/  # for public data to be version controlled
     |  +- scratch/     # temporary files that can be safely deleted or lost; no version control
     |  +- metadata/    # documentation of metadata
     |
@@ -64,4 +64,3 @@ Every research project is different. This repository is designed to serve as a f
 ## References
 
 The structure of this repository closely follows the excellent [rr-init](https://github.com/Reproducible-Science-Curriculum/rr-init) repository, which in turn follows Nobel [(2009)](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424). We have also incorporated structural ideas from [Gandrud (2015)](http://christophergandrud.github.io/RepResR-RStudio/) and Camerer et al. ([2016](https://osf.io/pfdyw/), [2018](https://osf.io/bzm54/)).  Reference information related to the **Pre-registration Template** and **Replication Report Template** is included in the `/docs` folder.
-

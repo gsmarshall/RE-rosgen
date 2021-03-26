@@ -2,3 +2,14 @@ path,name,format,sources,metadata files
 raw/public/CHaMP_Data_MFJD.shp,CHaMP Data,shapefile,,readme.md; MFJD_Variables.csv
 raw/private/JohnDayWShed.tif,John Day Watershed LiDAR,geotiff,,readme.md; Camp_Creek_Lidar_Report_2008.pdf; 2008_OLC_Camp_Creek_Acceptance_Report.pdf
 raw/private/JohnDayWShed_OrthoPrj.tif,John Day Watershed Orthophoto,geotiff,,readme.md
+derived/public/bank_centerLines_raw/bank_lines.shp,digitized bank centerlines,shapefile,JohnDayWShed.tif via hand digitization,readme.md; 1-Research_Protocol_GRASS.pdf
+derived/public/valley_centerLines_raw/pl.shp,digitized valley centerlines,shapefile,JohnDayWShed.tif via hand digitization,readme.md; 1-Research_Protocol_GRASS.pdf
+derived/public/banks_centerLine.gpkg,final stream centerline,geopackage,bank_centerLines_raw/bank_lines.shp,readme.md; 1-Research_Protocol_GRASS.pdf
+derived/public/valley_centerLine.gpkg,final valley centerline,geopackage,valley_centerLines_raw/pl.shp,readme.md; 1-Research_Protocol_GRASS.pdf
+derived/public/CHaMP_MFJD_loc17.gpkg,single CHaMP survey point used in analysis,geopackage,CHaMP_Data_MFJD.shp,MFJD_Variables.csv
+derived/public/cross_points_gsm.txt,transect points,plain text,see GRASS Research Protocol section 3,readme.md; 1-Research_Protocol_GRASS.pdf
+derived/public/cross_prof_gsm.txt,cross-sectional profile,plain text,cross_points_gsm.txt,readme.md; 1-Research_Protocol_GRASS.pdf
+derived/public/long_points_gsm.txt,stream centerline points,plain text,banks_centerLine.gpkg,readme.md; 1-Research_Protocol_GRASS.pdf
+derived/public/long_prof_gsm.txt,longitudinal profile,plain text,long_points_gsm.txt,readme.md; 1-Research_Protocol_GRASS.pdf
+derived/public/demShade.tif,study site DEM,geotiff,JohnDayWShed.tif,readme.md; 1-Research_Protocol_GRASS.pdf; Camp_Creek_Lidar_Report_2008.pdf; 2008_OLC_Camp_Creek_Acceptance_Report.pdf
+derived/public/slope.tif,study site slope,geotiff,JohnDayWShed.tif,readme.md; 1-Research_Protocol_GRASS.pdf; Camp_Creek_Lidar_Report_2008.pdf; 2008_OLC_Camp_Creek_Acceptance_Report.pdf
